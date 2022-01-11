@@ -1,0 +1,31 @@
+.question_no{
+    padding-top: 15%;
+    font-size: 20px;
+    font-weight: 600;
+}
+.instruction{
+    padding-top: 20px;
+    font-size: 15px;
+}
+.question_text{
+    padding-top: 10px;
+    font-size: 20px;
+}
+.alloptions{
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin-left: 42.5%;
+    padding-top: 15px;
+}
+button{
+    height: 20px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+
+
+/* .alloptions mein margin-left check krna hai */
