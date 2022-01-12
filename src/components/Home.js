@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 import '../css/Home.css';
 
 const Home = () => {
@@ -6,6 +6,7 @@ const Home = () => {
     const [current, setCurrent] = useState(0);
     const [showScore, setshowScore] = useState(false);
     const [score, setScore] = useState(0);
+    //const [time, setTime] = useState(50);
 
     const questions = [
         {
@@ -35,17 +36,54 @@ const Home = () => {
         }
       ];
 
-      const handleAnswerButtonClick = (marked) => {
-        if(current<questions.length-1){
-        setCurrent(current+1)
+      const playAgain=()=>{
+          setScore(0);
+          setshowScore(false);
+          setCurrent(0);
+      }
+
+      const previous=()=>{
+        const previousQuestion = current - 1;
+        if(previousQuestion>=0){
+            setCurrent(previousQuestion);
         }
         else{
-          alert("End of the quiz!!")
+            alert("You have reached the first question of the quiz!!");
         }
-        if (marked===questions[current].correctAnswer) {
+      }
+
+      const marked="";
+      const next=(marked)=>{
+        if(marked===""){
+          alert("Please select an option first!");
+        }
+        else{
+          const nextQuestion = current + 1;
+          if (nextQuestion < questions.length) {
+              setCurrent(nextQuestion);
+          } 
+          else {
+             setshowScore(true);
+          }
+        }
+      }
+
+
+      var answered=false;
+      const handleAnswerButtonClick = (marked) => {
+        if (marked===questions[current].correctAnswer && answered===false) {
             setScore(score + 1);
+            answered=true;
         }
-    };
+
+      };
+
+      const reset=(marked)=>{
+        if(marked===questions[current].correctAnswer){
+           setScore(score-1);
+           marked="";
+        }
+      }
 
     return (
         <div className="outer">
@@ -53,12 +91,19 @@ const Home = () => {
                 <span>Question {current+1}</span>/{questions.length}
             </div>
             <div className="instruction">Select any one option.</div>
+            {/* <div className='timer'>
+                 <p>{time}</p> 
+            </div> */}
             <div className="question_text">Question: {questions[current].question}</div>
             <div className="alloptions">
                 {questions[current].options.map((answer) => (<button onClick={()=> handleAnswerButtonClick(answer)}>{answer}</button>))}
             </div>
-            <div className='app'>{showScore ? <div className='score-section'> You scored {score} out of {questions.length}.</div>
-              :<></>}
+            <div className='app'>{showScore ? <div className='score-section'> You scored {score} out of {questions.length}.<br/>Do you want to play again? <br/><button className="playAgain" onClick={playAgain}> Play Again </button></div>
+              :<>
+                 <button onClick={previous}>Previous</button>
+                 <button onClick={next}>Next</button>
+                 <button onClick={reset}>Reset Answer</button>
+               </>}
             </div>
     </div>
     )
