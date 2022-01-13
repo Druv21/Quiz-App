@@ -11,8 +11,8 @@ const Frontpage = () => {
                 </Link>
             </div>
             
-                <Link to='/home'>
-                    <button onClick={"Home.js"}>Start Quiz</button>
+                <Link to='/quizpage'>
+                    <button onClick={"Quizpage.js"}>Start Quiz</button>
                 </Link>
             
         </>
@@ -20,18 +20,3 @@ const Frontpage = () => {
 }
 
 export default Frontpage
-
-
-// else{
-//   if(clicked[current]===-1){
-//     clicked[current]=selected;
-//   }
-//   else{
-//     if(!clicked[current]===questions[current].correctAnswer){
-//       clicked[current]=selected;
-//     }
-//     else{
-//       setScore(score-1);
-//     }
-//   }
-// }

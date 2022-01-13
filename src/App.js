@@ -1,7 +1,7 @@
 import './App.css';
 import Frontpage from './components/Frontpage';
 import Instructions from './components/Instructions';
-import Home from './components/Home';
+import Quizpage from './components/Quizpage';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
        <Switch>
          <Route path='/' exact component={Frontpage} />
          <Route path='/instructions' exact component={Instructions} />
-         <Route path='/home' exact component={Home} />
+         <Route path='/quizpage' exact component={Quizpage} />
        </Switch>
      </BrowserRouter>
     </>
