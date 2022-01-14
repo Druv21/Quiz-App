@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { questions } from './Questions';
+import {Link} from 'react-router-dom';
 import '../css/Quizpage.css';
 
 var clicked=[-1];
@@ -84,7 +85,7 @@ const Quizpage = () => {
 
     return (
         <>
-           <div className="question_no">
+            <div className="question_no">
                 <span>Question {current+1}</span>/{questions.length}
             </div>
             <div className="instruction">
@@ -101,8 +102,16 @@ const Quizpage = () => {
                       if(!showScore) handleAnswerButtonClick(answer,index)
                   }}>{answer}</button>))}
             </div>
-            <div className="app">{showScore ? <><div className="score-section"> You scored {score} out of {questions.length}.<br/></div>
-            <div className="playbtn"> Do you want to play again? <br/><button className="btn2" onClick={playAgain}> Play Again </button></div></>
+            <div className="app">{showScore ? <>
+            <div className="score-section"> You scored {score} out of {questions.length}.<br/>
+            <div className="display">
+              <Link className="link_answers" to='/answers'>
+                 <button className="view_answers" onClick={"Answers.js"}>View Answers</button>
+              </Link>
+            </div>
+            </div>
+            <div className="playbtn"> Do you want to play again? <br/><button className="btn2" onClick={playAgain}> Play Again </button></div>
+            </>
               :<div className="buttons">
                  <button className="btn1" onClick={previous}>Previous</button>
                  <button className="btn1" onClick={next}>Next</button>
