@@ -1,15 +1,31 @@
 .question_no{
-    padding-top: 15%;
-    font-size: 20px;
-    font-weight: 600;
+    background-color: #ffb740;
+    height: 2%;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    font-size: 30px;
+    font-weight: 650;
+}
+.question_no span{
+    background-color: #ffb740;
 }
 .instruction{
+    padding-left: 3vw;
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
     padding-top: 20px;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.timer{
+    padding-left: 75%;
+    padding-right: 3vw;
 }
 .question_text{
-    padding-top: 10px;
-    font-size: 20px;
+    padding-top: 2vh;
+    font-size: 25px;
+    font-weight: 500;
 }
 .alloptions{
     font-size: 40px;
@@ -17,13 +33,46 @@
     flex-direction: column;
     width: 15%;
     margin-left: 42.5%;
-    padding-top: 15px;
+    padding-top: 4vh;
 }
-button{
-    height: 20px;
+.btn3{
+    height: 5vh;
+    margin: 8px;
+    border-radius: 10px;
+    background-color: rgb(250, 125, 29,0.8);
+    font-size: 15px;
+    font-weight: 540;
+    text-align: justify;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.btn1, .btn2{
+    height: 4vh;
+    width: 5%;
     margin: 5px;
     border-radius: 5px;
+    background-color: #FFB740;
 }
+.btn2{
+    width: 10%;
+    font-weight: 500;
+    font-size: 15px;
+}
+.buttons, .score-section{
+    padding-top: 1.5vw;
+    font-size: 20px;
+    font-weight: 500;
+}
+.playbtn{
+    padding-top: 2vh;
+    font-weight: 500;
+}
+.score-section{
+    font-size: 25px;
+}
+
+
+
 
 
 

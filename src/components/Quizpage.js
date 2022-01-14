@@ -83,28 +83,32 @@ const Quizpage = () => {
       },[time]);
 
     return (
-        <div className="outer">
+        <>
            <div className="question_no">
                 <span>Question {current+1}</span>/{questions.length}
             </div>
-            <div className="instruction">Select any one option.</div>
-            <div className='timer'>
-                 <p>{time}</p> 
+            <div className="instruction">
+              <div>
+                Select any one option.
+              </div>
+              <div className="timer">
+                 Time left: {time}
+              </div>
             </div>
             <div className="question_text">{questions[current].question}</div>
             <div className="alloptions">
-                {questions[current].options.map((answer,index) => (<button onClick={()=> {
+                {questions[current].options.map((answer,index) => (<button className="btn3" onClick={()=> {
                       if(!showScore) handleAnswerButtonClick(answer,index)
                   }}>{answer}</button>))}
             </div>
-            <div className="app">{showScore ? <div className='score-section'> You scored {score} out of {questions.length}.<br/>
-                 Do you want to play again? <br/><button className="playAgain" onClick={playAgain}> Play Again </button></div>
-              :<>
-                 <button onClick={previous}>Previous</button>
-                 <button onClick={next}>Next</button>
-               </>}
+            <div className="app">{showScore ? <><div className="score-section"> You scored {score} out of {questions.length}.<br/></div>
+            <div className="playbtn"> Do you want to play again? <br/><button className="btn2" onClick={playAgain}> Play Again </button></div></>
+              :<div className="buttons">
+                 <button className="btn1" onClick={previous}>Previous</button>
+                 <button className="btn1" onClick={next}>Next</button>
+               </div>}
             </div>
-        </div>
+        </>
     )
 }
 
