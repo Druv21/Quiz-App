@@ -9,13 +9,13 @@ const Quizpage = () => {
     const [current, setCurrent] = useState(0);
     const [showScore, setshowScore] = useState(false);
     const [score, setScore] = useState(0);
-    const [time, setTime] = useState(20);
+    const [time, setTime] = useState(80);
 
       const playAgain=()=>{
           setScore(0);
           setshowScore(false);
           setCurrent(0);
-          setTime(20);
+          setTime(80);
           clicked.fill(-1);
       }
 
@@ -81,7 +81,7 @@ const Quizpage = () => {
               }
          },1000);
          return ()=> clearInterval(interval);
-      },[time]);
+      },[time,showScore]);
 
     return (
         <>
@@ -89,7 +89,7 @@ const Quizpage = () => {
                 <span>Question {current+1}</span>/{questions.length}
             </div>
             <div className="instruction">
-              <div>
+              <div className="instruction1">
                 Select any one option.
               </div>
               <div className="timer">
@@ -100,14 +100,14 @@ const Quizpage = () => {
             <div className="alloptions">
                 {questions[current].options.map((answer,index) => (<button className="btn3" onClick={()=> {
                       if(!showScore) handleAnswerButtonClick(answer,index)
-                  }}>{answer}</button>))}
+                  }}><b>{answer}</b></button>))}
             </div>
             <div className="app">{showScore ? <>
             <div className="score-section"> You scored {score} out of {questions.length}.<br/>
             <div className="display">
               <Link className="link_answers" to='/answers'>
-                 <button className="view_answers" onClick={"Answers.js"}>View Answers</button>
-              </Link>
+                    <button className="btn2"><a className="a2" href="Answers.js">View Answers</a></button>
+                </Link>
             </div>
             </div>
             <div className="playbtn"> Do you want to play again? <br/><button className="btn2" onClick={playAgain}> Play Again </button></div>

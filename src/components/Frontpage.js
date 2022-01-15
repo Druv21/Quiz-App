@@ -7,7 +7,7 @@ const Frontpage = () => {
         <>
             <div className="info_link">
                 <div className="head">
-                    Welcome to the Quiz App
+                    Welcome to the Quiz
                 </div>
                 <div className="title">Please read the instructions before starting the quiz.</div>
                 <Link className="link_instructions" to='/instructions'>
@@ -16,7 +16,7 @@ const Frontpage = () => {
             </div>
             <div className="start">
                 <Link className="link_quizpage" to='/quizpage'>
-                    <button className="btn" onClick={"Quizpage.js"}>Start Quiz</button>
+                    <button className="btn"><a className="a1" href="Quizpage.js">Start Quiz</a></button>
                 </Link>
             </div>
         </>

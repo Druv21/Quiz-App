@@ -9,7 +9,7 @@ const Answers = () => {
             Answers
         </div>
         <div className="show_answer">
-           {questions.map((correct) =>(<><div className="align">Question: {correct.question}</div><div className="align2">Answer: {correct.correctAnswer}</div><br/></>))}
+           {questions.map((correct) =>(<><div className="align1">Question: {correct.question}</div><div className="align2">Answer: {correct.correctAnswer}</div><br/></>))}
         </div>
         </>
     )
