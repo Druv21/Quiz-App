@@ -3,21 +3,41 @@ import { questions } from './Questions';
 import {Link} from 'react-router-dom';
 import '../css/Quizpage.css';
 
-var clicked=[-1];
+var clicked=[-1],d;
 const Quizpage = () => {
 
     const [current, setCurrent] = useState(0);
     const [showScore, setshowScore] = useState(false);
     const [score, setScore] = useState(0);
-    const [time, setTime] = useState(80);
+    const [time, setTime] = useState(20);
+    const [count, setCount] = useState(0);
+    const [high, setHigh] = useState(0);
 
       const playAgain=()=>{
           setScore(0);
           setshowScore(false);
           setCurrent(0);
-          setTime(80);
+          setTime(20);
           clicked.fill(-1);
       }
+
+      const setbefore=()=>{
+        d=localStorage.getItem("highscore");
+        if(!count && score>d){
+        localStorage.setItem("highscore",JSON.stringify(score));
+        setCount(1);
+        }
+      }
+
+       const highscore=()=>{
+         if(localStorage.getItem("highscore")==null)
+         localStorage.setItem("highscore",JSON.stringify(0));
+        setHigh(localStorage.getItem("highscore"));
+        if(current===questions.length-1 && score>high)
+        {
+          localStorage.setItem("highscore",JSON.stringify(score));
+        }
+     }
 
       const previous=()=>{
         const previousQuestion = current - 1;
@@ -31,12 +51,13 @@ const Quizpage = () => {
 
       const next=()=>{
           const nextQuestion = current + 1;
+          highscore();
           if (nextQuestion < questions.length) {
               setCurrent(nextQuestion);
           } 
           else {
              setshowScore(true);
-          }
+                   }
       }
 
       const handleAnswerButtonClick = (marked,selected) => {
@@ -78,6 +99,8 @@ const Quizpage = () => {
               }
               else{
                   setshowScore(true);
+                  setbefore();
+                  highscore();
               }
          },1000);
          return ()=> clearInterval(interval);
@@ -98,16 +121,19 @@ const Quizpage = () => {
             </div>
             <div className="question_text">{questions[current].question}</div>
             <div className="alloptions">
-                {questions[current].options.map((answer,index) => (<button className="btn3" onClick={()=> {
+                {questions[current].options.map((answer,index) => (<button className="btn3" type="radio" onClick={()=> {
                       if(!showScore) handleAnswerButtonClick(answer,index)
                   }}><b>{answer}</b></button>))}
             </div>
             <div className="app">{showScore ? <>
             <div className="score-section"> You scored {score} out of {questions.length}.<br/>
+            <div>Your HighScore is: {high}</div>
             <div className="display">
               <Link className="link_answers" to='/answers'>
-                    <button className="btn2"><a className="a2" href="Answers.js">View Answers</a></button>
-                </Link>
+                    <button className="btn2">
+                      <a className="a2" href="Answers.js">View Answers</a>
+                    </button>
+              </Link>
             </div>
             </div>
             <div className="playbtn"> Do you want to play again? <br/><button className="btn2" onClick={playAgain}> Play Again </button></div>
@@ -122,36 +148,3 @@ const Quizpage = () => {
 }
 
 export default Quizpage
-
-// const Timer = (props:any) => {
-//     const {initialMinute = 0,initialSeconds = 0} = props;
-//     const [ minutes, setMinutes ] = useState(initialMinute);
-//     const [seconds, setSeconds ] =  useState(initialSeconds);
-//     useEffect(()=>{
-//     let myInterval = setInterval(() => {
-//             if (seconds > 0) {
-//                 setSeconds(seconds - 1);
-//             }
-//             if (seconds === 0) {
-//                 if (minutes === 0) {
-//                     clearInterval(myInterval)
-//                 } else {
-//                     setMinutes(minutes - 1);
-//                     setSeconds(59);
-//                 }
-//             } 
-//         }, 1000)
-//         return ()=> {
-//             clearInterval(myInterval);
-//           };
-//     });
-
-//     return (
-//         <div>
-//         { minutes === 0 && seconds === 0
-//             ? null
-//             : <h1> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h1> 
-//         }
-//         </div>
-//     )
-// }

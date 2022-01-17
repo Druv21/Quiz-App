@@ -64,7 +64,6 @@ a{
     width: 18vw;
     margin: 8px;
     border-radius: 10px;
-    border: none;
     background-color: rgb(250, 125, 29, 0.8);
     font-size: 1vw;
     font-weight: 545;
@@ -74,10 +73,13 @@ a{
     cursor: pointer;
 }
 
+.btn3:active{
+    background-color: rgb(280, 125, 29);
+}
+
 .btn1{
     font-size: 15px;
     font-weight: 550;
-    border: none;
     cursor: pointer;
 }
 
@@ -94,7 +96,6 @@ a{
     font-weight: 550;
     font-size: 1.2vw;
     border-radius: 8px;
-    border: none;
     cursor: pointer;
 }
 
