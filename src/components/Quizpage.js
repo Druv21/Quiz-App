@@ -9,7 +9,7 @@ const Quizpage = () => {
     const [current, setCurrent] = useState(0);
     const [showScore, setshowScore] = useState(false);
     const [score, setScore] = useState(0);
-    const [time, setTime] = useState(20);
+    const [time, setTime] = useState(80);
     const [count, setCount] = useState(0);
     const [high, setHigh] = useState(0);
 
@@ -17,7 +17,7 @@ const Quizpage = () => {
           setScore(0);
           setshowScore(false);
           setCurrent(0);
-          setTime(20);
+          setTime(80);
           clicked.fill(-1);
       }
 
